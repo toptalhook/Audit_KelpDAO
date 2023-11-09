@@ -1,0 +1,50 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+pragma solidity 0.8.21;
+
+import { UtilLib } from "../utils/UtilLib.sol";
+
+import { IPriceFetcher } from "../interfaces/IPriceFetcher.sol";
+import { LRTConfigRoleChecker, ILRTConfig } from "../utils/LRTConfigRoleChecker.sol";
+
+import { Initializable } from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+
+interface AggregatorInterface {
+    function latestAnswer() external view returns (uint256);
+}
+
+/// @title ChainlinkPriceOracle Contract
+/// @notice contract that fetches the exchange rate of assets from chainlink price feeds
+contract ChainlinkPriceOracle is IPriceFetcher, LRTConfigRoleChecker, Initializable {
+    mapping(address asset => address priceFeed) public override assetPriceFeed;
+
+    /// @custom:oz-upgrades-unsafe-allow constructor
+    constructor() {
+        _disableInitializers();
+    }
+
+    /// @dev Initializes the contract
+    /// @param lrtConfig_ LRT config address
+    function initialize(address lrtConfig_) external initializer {
+        UtilLib.checkNonZeroAddress(lrtConfig_);
+
+        lrtConfig = ILRTConfig(lrtConfig_);
+        emit UpdatedLRTConfig(lrtConfig_);
+    }
+
+    /// @notice Fetches Asset/ETH exchange rate
+    /// @param asset the asset for which exchange rate is required
+    /// @return assetPrice exchange rate of asset
+    function getAssetPrice(address asset) external view onlySupportedAsset(asset) returns (uint256) {
+        return AggregatorInterface(assetPriceFeed[asset]).latestAnswer();
+    }
+
+    /// @dev add/update the price oracle of any supported asset
+    /// @dev only LRTManager is allowed
+    /// @param asset asset address for which oracle price feed needs to be added/updated
+    /// @param priceFeed chainlink price feed contract which contains exchange rate info
+    function updatePriceFeedFor(address asset, address priceFeed) external onlyLRTManager onlySupportedAsset(asset) {
+        UtilLib.checkNonZeroAddress(priceFeed);
+        assetPriceFeed[asset] = priceFeed;
+        emit AssetPriceFeedUpdate(asset, priceFeed);
+    }
+}
