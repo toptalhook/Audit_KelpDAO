@@ -11,9 +11,9 @@ import { LRTOracle } from "src/LRTOracle.sol";
 import { ChainlinkPriceOracle } from "src/oracles/ChainlinkPriceOracle.sol";
 import { NodeDelegator } from "src/NodeDelegator.sol";
 
-import { ProxyFactory } from "script/foundry-scripts/utils/ProxyFactory.sol";
+import { ProxyFactory } from "script/utils/ProxyFactory.sol";
 import { ProxyAdmin } from "@openzeppelin/contracts/proxy/transparent/ProxyAdmin.sol";
-import { MockPriceAggregator } from "script/foundry-scripts/utils/MockPriceAggregator.sol";
+import { MockPriceAggregator } from "script/utils/MockPriceAggregator.sol";
 
 function getLSTs() view returns (address stETH, address rETH, address cbETH) {
     uint256 chainId = block.chainid;
