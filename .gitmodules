@@ -1,0 +1,3 @@
+[submodule "stader-lrt/lib/forge-std"]
+	path = stader-lrt/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
