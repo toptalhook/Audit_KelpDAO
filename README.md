@@ -29,30 +29,30 @@ _Note for C4 wardens: Anything included in this `Automated Findings / Publicly K
 
 Stader Labs has created new contracts for its upcoming Kelp product. The scope of the audit is to review the contracts and ensure that they are secure, resilient, and working as intended.
 
-[LRTConfig](./src/LRTConfig.sol): An upgradeable contract which is responsible for storing the configuration of the Kelp product. It is also responsible for storing the addresses of the other contracts in the Kelp product.
+[LRTConfig](https://github.com/code-423n4/2023-11-kelp/blob/main/src/LRTConfig.sol): An upgradeable contract which is responsible for storing the configuration of the Kelp product. It is also responsible for storing the addresses of the other contracts in the Kelp product.
 
-[LRTepositPool](./src/LRDepositPool.sol): An upgradeable contract which receives the funds deposited by users into the Kelp product. From here, the funds are transferred to NodeDelegators contracts.
+[LRTepositPool](https://github.com/code-423n4/2023-11-kelp/blob/main/src/LRDepositPool.sol): An upgradeable contract which receives the funds deposited by users into the Kelp product. From here, the funds are transferred to NodeDelegators contracts.
 
-[NodeDelegator](./src/NodeDelegator.sol): These are contracts that receive funds from the LRDepositPool and delegate them to the EigenLayer strategy. The funds are then used to provide liquidity on the EigenLayer protocol. It is also an upgradeable contract.
+[NodeDelegator](https://github.com/code-423n4/2023-11-kelp/blob/main/src/NodeDelegator.sol): These are contracts that receive funds from the LRDepositPool and delegate them to the EigenLayer strategy. The funds are then used to provide liquidity on the EigenLayer protocol. It is also an upgradeable contract.
 
-[LRTOracle](./src/LRTOracle.sol): An upgradeable contract which is responsible for fetching the price of Liquid Stasking Tokens tokens from oracle services.
+[LRTOracle](https://github.com/code-423n4/2023-11-kelp/blob/main/src/LRTOracle.sol): An upgradeable contract which is responsible for fetching the price of Liquid Stasking Tokens tokens from oracle services.
 
-[RSETH](./src/RSETH.sol): Receipt token for depositing into the Kelp product. It is an upgradeable ERC20 token contract.
+[RSETH](https://github.com/code-423n4/2023-11-kelp/blob/main/src/RSETH.sol): Receipt token for depositing into the Kelp product. It is an upgradeable ERC20 token contract.
 
 # Scope
 
 | Contract                                                       | SLOC | Purpose                                                                                  | Libraries used |
 | -------------------------------------------------------------- | ---- | ---------------------------------------------------------------------------------------- | -------------- |
-| [LRTConfig](./src/LRTConfig.sol)                               | 111  | Configuration contract                                                                   |
-| [LRTDepositPool](./src/LRTDepositPool.sol)                     | 97   | User interfacing contract when funds are deposited                                       |
-| [NodeDelegator](./src/NodeDelegator.sol)                       | 65   | Recipient of funds from LRTDepositPool. In turn, it sends funds to Eigenlayer strategies |
-| [LRTOracle](./src/LRTOracle.sol)                               | 60   | get prices of liquid staking tokens                                                      |
-| [RSETH](./src/RSETH.sol)                                       | 45   | receipt token user receives upon depositing in LRTDepositPool                            |
-| [RSETH](./src/RSETH.sol)                                       | 45   | receipt token user receives upon depositing in LRTDepositPool                            |
-| [ChainlinkPriceOracle](./src/oracles/ChainlinkPriceOracle.sol) | 25   | wrapper contract to integrate chainlink oracles in LRTOracle                             |
-| [LRTConfigRoleChecker](./src/utils/LRTConfigRoleChecker.sol)   | 33   | Handles role checks                                                                      |
-| [UtilLib](./src/utils/UtilLib.sol)                             | 7    | Helper function lib                                                                      |
-| [LRTConstants](./src/utils/LRTConstants.sol)                   | 10   | shared constant variables                                                                |
+| [LRTConfig](https://github.com/code-423n4/2023-11-kelp/blob/main/src/LRTConfig.sol)                               | 111  | Configuration contract                                                                   |
+| [LRTDepositPool](https://github.com/code-423n4/2023-11-kelp/blob/main/src/LRTDepositPool.sol)                     | 97   | User interfacing contract when funds are deposited                                       |
+| [NodeDelegator](https://github.com/code-423n4/2023-11-kelp/blob/main/src/NodeDelegator.sol)                       | 65   | Recipient of funds from LRTDepositPool. In turn, it sends funds to Eigenlayer strategies |
+| [LRTOracle](https://github.com/code-423n4/2023-11-kelp/blob/main/src/LRTOracle.sol)                               | 60   | get prices of liquid staking tokens                                                      |
+| [RSETH](https://github.com/code-423n4/2023-11-kelp/blob/main/src/RSETH.sol)                                       | 45   | receipt token user receives upon depositing in LRTDepositPool                            |
+| [RSETH](https://github.com/code-423n4/2023-11-kelp/blob/main/src/RSETH.sol)                                       | 45   | receipt token user receives upon depositing in LRTDepositPool                            |
+| [ChainlinkPriceOracle](https://github.com/code-423n4/2023-11-kelp/blob/main/src/oracles/ChainlinkPriceOracle.sol) | 25   | wrapper contract to integrate chainlink oracles in LRTOracle                             |
+| [LRTConfigRoleChecker](https://github.com/code-423n4/2023-11-kelp/blob/main/src/utils/LRTConfigRoleChecker.sol)   | 33   | Handles role checks                                                                      |
+| [UtilLib](https://github.com/code-423n4/2023-11-kelp/blob/main/src/utils/UtilLib.sol)                             | 7    | Helper function lib                                                                      |
+| [LRTConstants](https://github.com/code-423n4/2023-11-kelp/blob/main/src/utils/LRTConstants.sol)                   | 10   | shared constant variables                                                                |
 
 It also includes the inherited interface contracts.
 
