@@ -23,8 +23,6 @@ Automated findings output for the audit can be found [here](https://github.com/c
 
 _Note for C4 wardens: Anything included in this `Automated Findings / Publicly Known Issues` section is considered a publicly known issue and is ineligible for awards._
 
-[ ⭐️ SPONSORS: Are there any known issues or risks deemed acceptable that shouldn't lead to a valid finding? If so, list them here. ]
-
 # Overview
 
 Stader Labs has created new contracts for its upcoming Kelp product. The scope of the audit is to review the contracts and ensure that they are secure, resilient, and working as intended.
@@ -77,8 +75,6 @@ It also includes the inherited interface contracts.
 - LSTs deposited by users will end up on that LST asset strategy contract in the Eigenlayer protocol
 
 ## Scoping Details
-
-[ ⭐️ SPONSORS: please confirm/edit the information below. ]
 
 ```
 - If you have a public code repo, please share it here:
