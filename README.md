@@ -58,7 +58,7 @@ It also includes the inherited interface contracts.
 
 ## Out of scope
 
-#### <span id=t-package-imports>Dependencies / External Imports</span>
+#### Dependencies / External Imports
 
 | Dependency / Import Path                                                 | Count |
 | ------------------------------------------------------------------------ | ----- |
