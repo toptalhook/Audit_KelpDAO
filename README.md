@@ -71,14 +71,17 @@ It also includes the inherited interface contracts.
 | @openzeppelin/contracts/interfaces/IERC20.sol                            | 3     |
 | @openzeppelin/contracts/token/ERC20/IERC20.sol                           | 2     |
 
+
+# Known Issues
+
+We are aware that EigenLayer has an mechanism to pause deposits in its protocol. Hence we created a layer called NodeDelegator which holds assets and deposits them into EigenLayer asset strategy. The intention is for these NodeDelegator contracts to deposit into Eigenlayer once deposit is available.
+
 # Additional Context
 
 - All core contracts are upgradeable.
 - LSTs deposited by users will end up on that LST asset strategy contract in the Eigenlayer protocol
 
 ## Scoping Details
-
-[ ⭐️ SPONSORS: please confirm/edit the information below. ]
 
 ```
 - If you have a public code repo, please share it here:
@@ -96,8 +99,6 @@ It also includes the inherited interface contracts.
 - Does it use an oracle?: Chainlink
 - Describe any novel or unique curve logic or mathematical models your code uses: N/A
 - Is this either a fork of or an alternate implementation of another project?:   False
-- Does it use a side-chain?:
-- Describe any specific areas you would like addressed:
 ```
 
 # Tests
