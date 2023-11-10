@@ -29,7 +29,7 @@ Stader Labs has created new contracts for its upcoming Kelp product. The scope o
 
 [LRTConfig](https://github.com/code-423n4/2023-11-kelp/blob/main/src/LRTConfig.sol): An upgradeable contract which is responsible for storing the configuration of the Kelp product. It is also responsible for storing the addresses of the other contracts in the Kelp product.
 
-[LRTepositPool](https://github.com/code-423n4/2023-11-kelp/blob/main/src/LRDepositPool.sol): An upgradeable contract which receives the funds deposited by users into the Kelp product. From here, the funds are transferred to NodeDelegators contracts.
+[LRTDepositPool](https://github.com/code-423n4/2023-11-kelp/blob/main/src/LRTDepositPool.sol): An upgradeable contract which receives the funds deposited by users into the Kelp product. From here, the funds are transferred to NodeDelegators contracts.
 
 [NodeDelegator](https://github.com/code-423n4/2023-11-kelp/blob/main/src/NodeDelegator.sol): These are contracts that receive funds from the LRDepositPool and delegate them to the EigenLayer strategy. The funds are then used to provide liquidity on the EigenLayer protocol. It is also an upgradeable contract.
 
