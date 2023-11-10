@@ -37,6 +37,14 @@ Stader Labs has created new contracts for its upcoming Kelp product. The scope o
 
 [RSETH](https://github.com/code-423n4/2023-11-kelp/blob/main/src/RSETH.sol): Receipt token for depositing into the Kelp product. It is an upgradeable ERC20 token contract.
 
+
+Also see [our blog](https://blog.kelpdao.xyz/) for additional info
+
+
+## Links
+
+See [Linktree](https://linktr.ee/kelpdao)
+
 # Scope
 
 | Contract                                                       | SLOC | Purpose                                                                                  | Libraries used |
