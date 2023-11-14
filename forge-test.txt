@@ -1,0 +1,17 @@
+// Test All
+forge test -vv
+
+// Test with call logs
+forge test -vvvv
+
+// LRTDepositPoolInitialize Test
+forge test -vvvv --match-path test/LRTDepositPoolTest.t.sol --match-contract LRTDepositPoolInitialize --match-test "test_RevertWhenLRTConfigIsZeroAddress*"
+
+forge test -vvvv --match-path test/LRTDepositPoolTest.t.sol --match-contract LRTDepositPoolInitialize --match-test "test_InitializeContractsVariables*"
+
+// LRTDepositPoolDepositAsset
+forge test -vvvv --match-path test/LRTDepositPoolTest.t.sol --match-contract LRTDepositPoolDepositAsset --match-test "test_RevertWhenDepositAmountIsZero*"
+
+
+//LRTDepositPoolGetRsETHAmountToMint
+forge test -vvvv --match-path test/LRTDepositPoolTest.t.sol --match-contract LRTDepositPoolGetRsETHAmountToMint --match-test "test_GetRsETHAmountToMint*"

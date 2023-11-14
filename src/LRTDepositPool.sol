@@ -106,7 +106,7 @@ contract LRTDepositPool is ILRTDepositPool, LRTConfigRoleChecker, PausableUpgrad
         ILRTOracle lrtOracle = ILRTOracle(lrtOracleAddress);
 
         // calculate rseth amount to mint based on asset amount and asset exchange rate
-        rsethAmountToMint = (amount * lrtOracle.getAssetPrice(asset)) / lrtOracle.getRSETHPrice();
+        rsethAmountToMint = (amount * lrtOracle.getAssetPrice(asset)) / lrtOracle.getRSETHPrice();//@audit arithmatic possible
     }
 
     /*//////////////////////////////////////////////////////////////

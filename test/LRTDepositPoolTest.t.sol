@@ -9,6 +9,7 @@ import { ILRTDepositPool } from "src/interfaces/ILRTDepositPool.sol";
 
 import { TransparentUpgradeableProxy } from "@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol";
 import { ProxyAdmin } from "@openzeppelin/contracts/proxy/transparent/ProxyAdmin.sol";
+import { console2 } from "forge-std/console2.sol";
 
 contract LRTOracleMock {
     function getAssetPrice(address) external pure returns (uint256) {
@@ -92,6 +93,11 @@ contract LRTDepositPoolDepositAsset is LRTDepositPoolTest {
     function test_RevertWhenDepositAmountIsZero() external {
         vm.expectRevert(ILRTDepositPool.InvalidAmount.selector);
         lrtDepositPool.depositAsset(rETHAddress, 0);
+
+        // vm.startPrank(admin);
+        lrtConfig.grantRole(LRTConstants.MANAGER, manager);
+        // vm.stopPrank();
+
     }
 
     function test_RevertWhenAssetIsNotSupported() external {
@@ -165,9 +171,12 @@ contract LRTDepositPoolGetRsETHAmountToMint is LRTDepositPoolTest {
 
     function test_GetRsETHAmountToMint() external {
         uint256 amountToDeposit = 1 ether;
+        console2.logUint(lrtConfig.depositLimitByAsset(rETHAddress) / 1e18);
         vm.startPrank(manager);
         lrtConfig.updateAssetDepositLimit(rETHAddress, amountToDeposit);
         vm.stopPrank();
+
+        console2.logUint(lrtConfig.depositLimitByAsset(rETHAddress) / 1e18);
 
         assertEq(
             lrtDepositPool.getRsETHAmountToMint(rETHAddress, amountToDeposit),

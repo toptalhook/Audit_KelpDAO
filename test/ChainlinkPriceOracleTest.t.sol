@@ -28,14 +28,13 @@ contract ChainlinkPriceOracleTest is LRTConfigTest {
         vm.prank(admin);
         lrtConfig.grantRole(LRTConstants.MANAGER, manager);
 
-        ProxyAdmin proxyAdmin = new ProxyAdmin();
+        ProxyAdmin proxyAdmin = new ProxyAdmin();// @audit Proxy Admin is possible to upgrade?
         ChainlinkPriceOracle priceOracleImpl = new ChainlinkPriceOracle();
         TransparentUpgradeableProxy priceOracleProxy = new TransparentUpgradeableProxy(
             address(priceOracleImpl),
             address(proxyAdmin),
             ""
         );
-
         priceOracle = ChainlinkPriceOracle(address(priceOracleProxy));
     }
 }

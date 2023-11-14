@@ -3,6 +3,7 @@
 pragma solidity 0.8.21;
 
 import { Test } from "forge-std/Test.sol";
+import { console2 } from "forge-std/console2.sol";
 import { ERC20 } from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract MockToken is ERC20 {
@@ -24,7 +25,7 @@ contract BaseTest is Test {
     address public bob = makeAddr("bob");
     address public carol = makeAddr("carol");
 
-    uint256 public oneThousand = 1000 ** 18;
+    uint256 public oneThousand = 1000 * 10 ** 18;
 
     function setUp() public virtual {
         stETH = new MockToken("staked ETH", "stETH");
@@ -35,6 +36,7 @@ contract BaseTest is Test {
         mintLSTTokensForUsers(stETH);
         mintLSTTokensForUsers(rETH);
         mintLSTTokensForUsers(cbETH);
+        // console2.logAddress(alice);
     }
 
     function mintLSTTokensForUsers(MockToken asset) internal {

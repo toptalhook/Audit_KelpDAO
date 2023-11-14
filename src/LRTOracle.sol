@@ -49,7 +49,7 @@ contract LRTOracle is ILRTOracle, LRTConfigRoleChecker, PausableUpgradeable {
     /// @notice Provides RSETH/ETH exchange rate
     /// @dev calculates based on stakedAsset value received from eigen layer
     /// @return rsETHPrice exchange rate of RSETH
-    function getRSETHPrice() external view returns (uint256 rsETHPrice) {
+    function getRSETHPrice() external view returns (uint256 rsETHPrice) {// @audit underflow, overflow, round up possible
         address rsETHTokenAddress = lrtConfig.rsETH();
         uint256 rsEthSupply = IRSETH(rsETHTokenAddress).totalSupply();
 
